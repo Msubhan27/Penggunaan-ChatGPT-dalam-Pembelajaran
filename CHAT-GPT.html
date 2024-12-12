@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuesioner Penggunaan ChatGPT dalam Pembelajaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #2575fc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kuesioner Penggunaan ChatGPT dalam Pembelajaran</h1>
+        <form id="kuesioner-form">
+            <div class="question">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+            </div>
+
+            <div class="question">
+                <label for="class">Jabatan:</label>
+                <input type="text" id="class" name="class" placeholder="Mahasiswa, Dosen atau lainnya">
+            </div>
+
+            <div class="question">
+                <label>Seberapa sering Anda menggunakan ChatGPT dalam pembelajaran?</label>
+                <select name="frequency" required>
+                    <option value="">Pilih...</option>
+                    <option value="Sangat Sering">Sangat Sering</option>
+                    <option value="Sering">Sering</option>
+                    <option value="Kadang-kadang">Kadang-kadang</option>
+                    <option value="Jarang">Jarang</option>
+                    <option value="Tidak Pernah">Tidak Pernah</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>Apakah ChatGPT membantu Anda memahami materi lebih baik?</label>
+                <select name="helpfulness" required>
+                    <option value="">Pilih...</option>
+                    <option value="Sangat Membantu">Sangat Membantu</option>
+                    <option value="Membantu">Membantu</option>
+                    <option value="Netral">Netral</option>
+                    <option value="Tidak Membantu">Tidak Membantu</option>
+                    <option value="Sangat Tidak Membantu">Sangat Tidak Membantu</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>Fitur apa yang paling sering Anda gunakan di ChatGPT?</label>
+                <select name="features" required>
+                    <option value="">Pilih...</option>
+                    <option value="Penjelasan Konsep">Penjelasan Konsep</option>
+                    <option value="Pembuatan Contoh Soal">Pembuatan Contoh Soal</option>
+                    <option value="Pembuatan Teks">Pembuatan Teks</option>
+                    <option value="Diskusi Topik">Diskusi Topik</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>Apa kendala yang Anda alami saat menggunakan ChatGPT?</label>
+                <textarea name="challenges" rows="4" placeholder="Tuliskan kendala yang Anda alami"></textarea>
+            </div>
+
+            <div class="question">
+                <label>Apakah Anda merasa ChatGPT meningkatkan efektivitas pembelajaran?</label>
+                <select name="effectiveness" required>
+                    <option value="">Pilih...</option>
+                    <option value="Sangat Meningkatkan">Sangat Meningkatkan</option>
+                    <option value="Meningkatkan">Meningkatkan</option>
+                    <option value="Netral">Netral</option>
+                    <option value="Tidak Meningkatkan">Tidak Meningkatkan</option>
+                    <option value="Sangat Tidak Meningkatkan">Sangat Tidak Meningkatkan</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>Adakah saran atau masukan untuk pengembangan penggunaan ChatGPT?</label>
+                <textarea name="suggestions" rows="4" placeholder="Tuliskan saran atau masukan Anda"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Kirim</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('kuesioner-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch('muhammadsubhan2701@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Terima kasih, jawaban Anda telah terkirim!');
+                    event.target.reset();
+                } else {
+                    alert('Terjadi kesalahan, silakan coba lagi.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan jaringan.');
+            });
+        });
+    </script>
+</body>
+</html>
