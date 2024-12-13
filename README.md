@@ -1,6 +1,5 @@
 # Penggunaan-ChatGPT-dalam-Pembelajaran
 web Penggunaan ChatGPT dalam Pembelajaran
-<>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
